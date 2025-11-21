@@ -1,5 +1,5 @@
 
-// MFCApplication1.h : main header file for the MFCApplication1 application
+// MDIAppTest.h : main header file for the MDIAppTest application
 //
 #pragma once
 
@@ -10,14 +10,14 @@
 #include "resource.h"       // main symbols
 
 
-// CMFCApplication1App:
-// See MFCApplication1.cpp for the implementation of this class
+// CMDIAppTestApp:
+// See MDIAppTest.cpp for the implementation of this class
 //
 
-class CMFCApplication1App : public CWinAppEx
+class CMDIAppTestApp : public CWinAppEx
 {
 public:
-	CMFCApplication1App() noexcept;
+	CMDIAppTestApp() noexcept;
 
 
 // Overrides
@@ -37,4 +37,4 @@ public:
 	DECLARE_MESSAGE_MAP()
 };
 
-extern CMFCApplication1App theApp;
+extern CMDIAppTestApp theApp;

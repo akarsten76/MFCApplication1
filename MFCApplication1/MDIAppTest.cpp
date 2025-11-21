@@ -1,17 +1,17 @@
 
-// MFCApplication1.cpp : Defines the class behaviors for the application.
+// MDIAppTest.cpp : Defines the class behaviors for the application.
 //
 
 #include "pch.h"
 #include "framework.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
-#include "MFCApplication1.h"
+#include "MDIAppTest.h"
 #include "MainFrm.h"
 
 #include "ChildFrm.h"
-#include "MFCApplication1Doc.h"
-#include "MFCApplication1View.h"
+#include "MDIAppTestDoc.h"
+#include "MDIAppTestView.h"
 #include "AboutDlg.h"
 
 #ifdef _DEBUG
@@ -19,10 +19,10 @@
 #endif
 
 
-// CMFCApplication1App
+// CMDIAppTestApp
 
-BEGIN_MESSAGE_MAP(CMFCApplication1App, CWinAppEx)
-	ON_COMMAND(ID_APP_ABOUT, &CMFCApplication1App::OnAppAbout)
+BEGIN_MESSAGE_MAP(CMDIAppTestApp, CWinAppEx)
+	ON_COMMAND(ID_APP_ABOUT, &CMDIAppTestApp::OnAppAbout)
 	// Standard file based document commands
 	ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
@@ -31,9 +31,9 @@ BEGIN_MESSAGE_MAP(CMFCApplication1App, CWinAppEx)
 END_MESSAGE_MAP()
 
 
-// CMFCApplication1App construction
+// CMDIAppTestApp construction
 
-CMFCApplication1App::CMFCApplication1App() noexcept
+CMDIAppTestApp::CMDIAppTestApp() noexcept
 {
 	m_bHiColorIcons = TRUE;
 
@@ -50,20 +50,20 @@ CMFCApplication1App::CMFCApplication1App() noexcept
 
 	// TODO: replace application ID string below with unique ID string; recommended
 	// format for string is CompanyName.ProductName.SubProduct.VersionInformation
-	SetAppID(_T("MFCApplication1.AppID.NoVersion"));
+	SetAppID(_T("MDIAppTest.AppID.NoVersion"));
 
 	// TODO: add construction code here,
 	// Place all significant initialization in InitInstance
 }
 
-// The one and only CMFCApplication1App object
+// The one and only CMDIAppTestApp object
 
-CMFCApplication1App theApp;
+CMDIAppTestApp theApp;
 
 
-// CMFCApplication1App initialization
+// CMDIAppTestApp initialization
 
-BOOL CMFCApplication1App::InitInstance()
+BOOL CMDIAppTestApp::InitInstance()
 {
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
@@ -116,10 +116,10 @@ BOOL CMFCApplication1App::InitInstance()
 	// Register the application's document templates.  Document templates
 	//  serve as the connection between documents, frame windows and views
 	CMultiDocTemplate* pDocTemplate;
-	pDocTemplate = new CMultiDocTemplate(IDR_MFCApplication1TYPE,
-		RUNTIME_CLASS(CMFCApplication1Doc),
+	pDocTemplate = new CMultiDocTemplate(IDR_MDIAppTestTYPE,
+		RUNTIME_CLASS(CMDIAppTestDoc),
 		RUNTIME_CLASS(CChildFrame), // custom MDI child frame
-		RUNTIME_CLASS(CMFCApplication1View));
+		RUNTIME_CLASS(CMDIAppTestView));
 	if (!pDocTemplate)
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
@@ -151,7 +151,7 @@ BOOL CMFCApplication1App::InitInstance()
 	return TRUE;
 }
 
-int CMFCApplication1App::ExitInstance()
+int CMDIAppTestApp::ExitInstance()
 {
 	//TODO: handle additional resources you may have added
 	AfxOleTerm(FALSE);
@@ -159,18 +159,18 @@ int CMFCApplication1App::ExitInstance()
 	return CWinAppEx::ExitInstance();
 }
 
-// CMFCApplication1App message handlers
+// CMDIAppTestApp message handlers
 
 // App command to run the dialog
-void CMFCApplication1App::OnAppAbout()
+void CMDIAppTestApp::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
 }
 
-// CMFCApplication1App customization load/save methods
+// CMDIAppTestApp customization load/save methods
 
-void CMFCApplication1App::PreLoadState()
+void CMDIAppTestApp::PreLoadState()
 {
 	BOOL bNameValid;
 	CString strName;
@@ -182,15 +182,15 @@ void CMFCApplication1App::PreLoadState()
 	GetContextMenuManager()->AddMenu(strName, IDR_POPUP_EXPLORER);
 }
 
-void CMFCApplication1App::LoadCustomState()
+void CMDIAppTestApp::LoadCustomState()
 {
 }
 
-void CMFCApplication1App::SaveCustomState()
+void CMDIAppTestApp::SaveCustomState()
 {
 }
 
-// CMFCApplication1App message handlers
+// CMDIAppTestApp message handlers
 
 
 

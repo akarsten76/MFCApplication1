@@ -5,7 +5,7 @@
 #include "PropertiesWnd.h"
 #include "Resource.h"
 #include "MainFrm.h"
-#include "MFCApplication1.h"
+#include "MDIAppTest.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE

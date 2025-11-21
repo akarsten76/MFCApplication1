@@ -1,16 +1,16 @@
 
-// MFCApplication1Doc.h : interface of the CMFCApplication1Doc class
+// MDIAppTestDoc.h : interface of the CMDIAppTestDoc class
 //
 
 
 #pragma once
 
 
-class CMFCApplication1Doc : public CDocument
+class CMDIAppTestDoc : public CDocument
 {
 protected: // create from serialization only
-	CMFCApplication1Doc() noexcept;
-	DECLARE_DYNCREATE(CMFCApplication1Doc)
+	CMDIAppTestDoc() noexcept;
+	DECLARE_DYNCREATE(CMDIAppTestDoc)
 
 // Attributes
 public:
@@ -29,7 +29,7 @@ public:
 
 // Implementation
 public:
-	virtual ~CMFCApplication1Doc();
+	virtual ~CMDIAppTestDoc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;

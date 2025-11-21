@@ -4,7 +4,7 @@
 
 #include "pch.h"
 #include "framework.h"
-#include "MFCApplication1.h"
+#include "MDIAppTest.h"
 
 #include "ChildFrm.h"
 

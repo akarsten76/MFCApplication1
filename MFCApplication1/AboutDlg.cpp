@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "framework.h"
-#include "MFCApplication1.h"
+#include "MDIAppTest.h"
 #include "AboutDlg.h"
 #include "ModuleInfo.h"
 

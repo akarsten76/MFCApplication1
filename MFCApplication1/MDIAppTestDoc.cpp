@@ -1,5 +1,5 @@
 
-// MFCApplication1Doc.cpp : implementation of the CMFCApplication1Doc class
+// MDIAppTestDoc.cpp : implementation of the CMDIAppTestDoc class
 //
 
 #include "pch.h"
@@ -7,10 +7,10 @@
 // SHARED_HANDLERS can be defined in an ATL project implementing preview, thumbnail
 // and search filter handlers and allows sharing of document code with that project.
 #ifndef SHARED_HANDLERS
-#include "MFCApplication1.h"
+#include "MDIAppTest.h"
 #endif
 
-#include "MFCApplication1Doc.h"
+#include "MDIAppTestDoc.h"
 
 #include <propkey.h>
 
@@ -18,27 +18,27 @@
 #define new DEBUG_NEW
 #endif
 
-// CMFCApplication1Doc
+// CMDIAppTestDoc
 
-IMPLEMENT_DYNCREATE(CMFCApplication1Doc, CDocument)
+IMPLEMENT_DYNCREATE(CMDIAppTestDoc, CDocument)
 
-BEGIN_MESSAGE_MAP(CMFCApplication1Doc, CDocument)
+BEGIN_MESSAGE_MAP(CMDIAppTestDoc, CDocument)
 END_MESSAGE_MAP()
 
 
-// CMFCApplication1Doc construction/destruction
+// CMDIAppTestDoc construction/destruction
 
-CMFCApplication1Doc::CMFCApplication1Doc() noexcept
+CMDIAppTestDoc::CMDIAppTestDoc() noexcept
 {
 	// TODO: add one-time construction code here
 
 }
 
-CMFCApplication1Doc::~CMFCApplication1Doc()
+CMDIAppTestDoc::~CMDIAppTestDoc()
 {
 }
 
-BOOL CMFCApplication1Doc::OnNewDocument()
+BOOL CMDIAppTestDoc::OnNewDocument()
 {
 	if (!CDocument::OnNewDocument())
 		return FALSE;
@@ -52,9 +52,9 @@ BOOL CMFCApplication1Doc::OnNewDocument()
 
 
 
-// CMFCApplication1Doc serialization
+// CMDIAppTestDoc serialization
 
-void CMFCApplication1Doc::Serialize(CArchive& ar)
+void CMDIAppTestDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
@@ -69,7 +69,7 @@ void CMFCApplication1Doc::Serialize(CArchive& ar)
 #ifdef SHARED_HANDLERS
 
 // Support for thumbnails
-void CMFCApplication1Doc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
+void CMDIAppTestDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 {
 	// Modify this code to draw the document's data
 	dc.FillSolidRect(lprcBounds, RGB(255, 255, 255));
@@ -90,7 +90,7 @@ void CMFCApplication1Doc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 }
 
 // Support for Search Handlers
-void CMFCApplication1Doc::InitializeSearchContent()
+void CMDIAppTestDoc::InitializeSearchContent()
 {
 	CString strSearchContent;
 	// Set search contents from document's data.
@@ -100,7 +100,7 @@ void CMFCApplication1Doc::InitializeSearchContent()
 	SetSearchContent(strSearchContent);
 }
 
-void CMFCApplication1Doc::SetSearchContent(const CString& value)
+void CMDIAppTestDoc::SetSearchContent(const CString& value)
 {
 	if (value.IsEmpty())
 	{
@@ -120,19 +120,19 @@ void CMFCApplication1Doc::SetSearchContent(const CString& value)
 
 #endif // SHARED_HANDLERS
 
-// CMFCApplication1Doc diagnostics
+// CMDIAppTestDoc diagnostics
 
 #ifdef _DEBUG
-void CMFCApplication1Doc::AssertValid() const
+void CMDIAppTestDoc::AssertValid() const
 {
 	CDocument::AssertValid();
 }
 
-void CMFCApplication1Doc::Dump(CDumpContext& dc) const
+void CMDIAppTestDoc::Dump(CDumpContext& dc) const
 {
 	CDocument::Dump(dc);
 }
 #endif //_DEBUG
 
 
-// CMFCApplication1Doc commands
+// CMDIAppTestDoc commands
