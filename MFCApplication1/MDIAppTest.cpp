@@ -156,11 +156,7 @@ BOOL CMDIAppTestApp::InitInstance()
 int CMDIAppTestApp::ExitInstance()
 {
 	//TODO: handle additional resources you may have added
-	if (m_hAboutDll)
-	{
-		FreeLibrary(m_hAboutDll);
-		m_hAboutDll = NULL;
-	}
+	// Note: m_hAboutDll is automatically unloaded when the process terminates
 
 	AfxOleTerm(FALSE);
 
