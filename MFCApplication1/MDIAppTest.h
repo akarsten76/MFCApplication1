@@ -28,6 +28,7 @@ public:
 // Implementation
 	UINT  m_nAppLook;
 	BOOL  m_bHiColorIcons;
+	HMODULE m_hAboutDll;
 
 	virtual void PreLoadState();
 	virtual void LoadCustomState();

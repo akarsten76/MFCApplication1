@@ -12,7 +12,9 @@
 #include "ChildFrm.h"
 #include "MDIAppTestDoc.h"
 #include "MDIAppTestView.h"
-#include "AboutDlg.h"
+
+// Function pointer type for ShowAboutDialog from AboutDll
+typedef void (*ShowAboutDialogFunc)(HWND hParent);
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -36,7 +38,7 @@ END_MESSAGE_MAP()
 CMDIAppTestApp::CMDIAppTestApp() noexcept
 {
 	m_bHiColorIcons = TRUE;
-
+	m_hAboutDll = NULL;
 
 	m_nAppLook = 0;
 	// support Restart Manager
@@ -154,6 +156,8 @@ BOOL CMDIAppTestApp::InitInstance()
 int CMDIAppTestApp::ExitInstance()
 {
 	//TODO: handle additional resources you may have added
+	// Note: m_hAboutDll is automatically unloaded when the process terminates
+
 	AfxOleTerm(FALSE);
 
 	return CWinAppEx::ExitInstance();
@@ -164,8 +168,28 @@ int CMDIAppTestApp::ExitInstance()
 // App command to run the dialog
 void CMDIAppTestApp::OnAppAbout()
 {
-	CAboutDlg aboutDlg;
-	aboutDlg.DoModal();
+	// Load DLL on first use
+	if (!m_hAboutDll)
+	{
+		m_hAboutDll = LoadLibrary(_T("AboutDll.dll"));
+	}
+
+	if (m_hAboutDll)
+	{
+		ShowAboutDialogFunc pShowAboutDialog = (ShowAboutDialogFunc)GetProcAddress(m_hAboutDll, "ShowAboutDialog");
+		if (pShowAboutDialog)
+		{
+			pShowAboutDialog(m_pMainWnd ? m_pMainWnd->GetSafeHwnd() : NULL);
+		}
+		else
+		{
+			AfxMessageBox(_T("Could not find ShowAboutDialog in AboutDll.dll"));
+		}
+	}
+	else
+	{
+		AfxMessageBox(_T("Could not load AboutDll.dll"));
+	}
 }
 
 // CMDIAppTestApp customization load/save methods
