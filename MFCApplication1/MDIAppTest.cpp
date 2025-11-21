@@ -150,9 +150,6 @@ BOOL CMDIAppTestApp::InitInstance()
 	pMainFrame->ShowWindow(m_nCmdShow);
 	pMainFrame->UpdateWindow();
 
-	// Load AboutDll
-	m_hAboutDll = LoadLibrary(_T("AboutDll.dll"));
-
 	return TRUE;
 }
 
@@ -175,6 +172,12 @@ int CMDIAppTestApp::ExitInstance()
 // App command to run the dialog
 void CMDIAppTestApp::OnAppAbout()
 {
+	// Load DLL on first use
+	if (!m_hAboutDll)
+	{
+		m_hAboutDll = LoadLibrary(_T("AboutDll.dll"));
+	}
+
 	if (m_hAboutDll)
 	{
 		ShowAboutDialogFunc pShowAboutDialog = (ShowAboutDialogFunc)GetProcAddress(m_hAboutDll, "ShowAboutDialog");
