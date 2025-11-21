@@ -38,7 +38,7 @@ END_MESSAGE_MAP()
 CMDIAppTestApp::CMDIAppTestApp() noexcept
 {
 	m_bHiColorIcons = TRUE;
-
+	m_hAboutDll = NULL;
 
 	m_nAppLook = 0;
 	// support Restart Manager
@@ -150,12 +150,21 @@ BOOL CMDIAppTestApp::InitInstance()
 	pMainFrame->ShowWindow(m_nCmdShow);
 	pMainFrame->UpdateWindow();
 
+	// Load AboutDll
+	m_hAboutDll = LoadLibrary(_T("AboutDll.dll"));
+
 	return TRUE;
 }
 
 int CMDIAppTestApp::ExitInstance()
 {
 	//TODO: handle additional resources you may have added
+	if (m_hAboutDll)
+	{
+		FreeLibrary(m_hAboutDll);
+		m_hAboutDll = NULL;
+	}
+
 	AfxOleTerm(FALSE);
 
 	return CWinAppEx::ExitInstance();
@@ -166,10 +175,9 @@ int CMDIAppTestApp::ExitInstance()
 // App command to run the dialog
 void CMDIAppTestApp::OnAppAbout()
 {
-	HMODULE hAboutDll = LoadLibrary(_T("AboutDll.dll"));
-	if (hAboutDll)
+	if (m_hAboutDll)
 	{
-		ShowAboutDialogFunc pShowAboutDialog = (ShowAboutDialogFunc)GetProcAddress(hAboutDll, "ShowAboutDialog");
+		ShowAboutDialogFunc pShowAboutDialog = (ShowAboutDialogFunc)GetProcAddress(m_hAboutDll, "ShowAboutDialog");
 		if (pShowAboutDialog)
 		{
 			pShowAboutDialog(m_pMainWnd ? m_pMainWnd->GetSafeHwnd() : NULL);
@@ -178,7 +186,6 @@ void CMDIAppTestApp::OnAppAbout()
 		{
 			AfxMessageBox(_T("Could not find ShowAboutDialog in AboutDll.dll"));
 		}
-		FreeLibrary(hAboutDll);
 	}
 	else
 	{
