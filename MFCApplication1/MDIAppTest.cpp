@@ -12,7 +12,9 @@
 #include "ChildFrm.h"
 #include "MDIAppTestDoc.h"
 #include "MDIAppTestView.h"
-#include "AboutDlg.h"
+
+// Function pointer type for ShowAboutDialog from AboutDll
+typedef void (*ShowAboutDialogFunc)(HWND hParent);
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -164,8 +166,24 @@ int CMDIAppTestApp::ExitInstance()
 // App command to run the dialog
 void CMDIAppTestApp::OnAppAbout()
 {
-	CAboutDlg aboutDlg;
-	aboutDlg.DoModal();
+	HMODULE hAboutDll = LoadLibrary(_T("AboutDll.dll"));
+	if (hAboutDll)
+	{
+		ShowAboutDialogFunc pShowAboutDialog = (ShowAboutDialogFunc)GetProcAddress(hAboutDll, "ShowAboutDialog");
+		if (pShowAboutDialog)
+		{
+			pShowAboutDialog(m_pMainWnd ? m_pMainWnd->GetSafeHwnd() : NULL);
+		}
+		else
+		{
+			AfxMessageBox(_T("Could not find ShowAboutDialog in AboutDll.dll"));
+		}
+		FreeLibrary(hAboutDll);
+	}
+	else
+	{
+		AfxMessageBox(_T("Could not load AboutDll.dll"));
+	}
 }
 
 // CMDIAppTestApp customization load/save methods
