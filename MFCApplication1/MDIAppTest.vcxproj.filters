@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MFCApplication1.h">
+    <ClInclude Include="MDIAppTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
@@ -30,10 +30,10 @@
     <ClInclude Include="ChildFrm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MFCApplication1Doc.h">
+    <ClInclude Include="MDIAppTestDoc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MFCApplication1View.h">
+    <ClInclude Include="MDIAppTestView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ModuleInfo.h">
@@ -65,7 +65,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MFCApplication1.cpp">
+    <ClCompile Include="MDIAppTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MainFrm.cpp">
@@ -74,10 +74,10 @@
     <ClCompile Include="ChildFrm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MFCApplication1Doc.cpp">
+    <ClCompile Include="MDIAppTestDoc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MFCApplication1View.cpp">
+    <ClCompile Include="MDIAppTestView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ModuleInfo.cpp">
@@ -106,7 +106,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MFCApplication1.rc">
+    <ResourceCompile Include="MDIAppTest.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -174,10 +174,10 @@
     <Image Include="res\userimages.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\MFCApplication1Doc.ico">
+    <Image Include="res\MDIAppTestDoc.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\MFCApplication1.ico">
+    <Image Include="res\MDIAppTest.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\Toolbar.bmp">
@@ -188,7 +188,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\MFCApplication1.rc2">
+    <None Include="res\MDIAppTest.rc2">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -1,19 +1,19 @@
 
-// MFCApplication1View.h : interface of the CMFCApplication1View class
+// MDIAppTestView.h : interface of the CMDIAppTestView class
 //
 
 #pragma once
 
 
-class CMFCApplication1View : public CView
+class CMDIAppTestView : public CView
 {
 protected: // create from serialization only
-	CMFCApplication1View() noexcept;
-	DECLARE_DYNCREATE(CMFCApplication1View)
+	CMDIAppTestView() noexcept;
+	DECLARE_DYNCREATE(CMDIAppTestView)
 
 // Attributes
 public:
-	CMFCApplication1Doc* GetDocument() const;
+	CMDIAppTestDoc* GetDocument() const;
 
 // Operations
 public:
@@ -29,7 +29,7 @@ protected:
 
 // Implementation
 public:
-	virtual ~CMFCApplication1View();
+	virtual ~CMDIAppTestView();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
@@ -45,8 +45,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 };
 
-#ifndef _DEBUG  // debug version in MFCApplication1View.cpp
-inline CMFCApplication1Doc* CMFCApplication1View::GetDocument() const
-   { return reinterpret_cast<CMFCApplication1Doc*>(m_pDocument); }
+#ifndef _DEBUG  // debug version in MDIAppTestView.cpp
+inline CMDIAppTestDoc* CMDIAppTestView::GetDocument() const
+   { return reinterpret_cast<CMDIAppTestDoc*>(m_pDocument); }
 #endif
 

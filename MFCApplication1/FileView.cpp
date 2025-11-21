@@ -4,7 +4,7 @@
 #include "mainfrm.h"
 #include "FileView.h"
 #include "Resource.h"
-#include "MFCApplication1.h"
+#include "MDIAppTest.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
