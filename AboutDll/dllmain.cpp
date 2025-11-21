@@ -9,30 +9,29 @@
 #endif
 
 static AFX_EXTENSION_MODULE AboutDllDLL = { FALSE };
-static HINSTANCE g_hInstance = NULL;
 
-extern "C" int APIENTRY
-DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
+class CAboutDllApp : public CWinApp
 {
-	UNREFERENCED_PARAMETER(lpReserved);
+public:
+	CAboutDllApp() {}
 
-	if (dwReason == DLL_PROCESS_ATTACH)
+	virtual BOOL InitInstance()
 	{
-		TRACE0("AboutDll.DLL Initializing!\n");
+		if (!AfxInitExtensionModule(AboutDllDLL, m_hInstance))
+			return FALSE;
 
-		if (!AfxInitExtensionModule(AboutDllDLL, hInstance))
-			return 0;
-
-		g_hInstance = hInstance;
 		new CDynLinkLibrary(AboutDllDLL);
+		return TRUE;
 	}
-	else if (dwReason == DLL_PROCESS_DETACH)
+
+	virtual int ExitInstance()
 	{
-		TRACE0("AboutDll.DLL Terminating!\n");
 		AfxTermExtensionModule(AboutDllDLL);
+		return CWinApp::ExitInstance();
 	}
-	return 1;
-}
+};
+
+CAboutDllApp theApp;
 
 extern "C" ABOUTDLL_API void ShowAboutDialog(HWND hParent)
 {
